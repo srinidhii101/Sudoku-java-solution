@@ -24,12 +24,17 @@ public class Main {
             index++;
         }
 
+        // Preparing the default Character
+        sudokuSolution.defaultCharacter = '0';
+        sudokuSolution.computeSolution();
+
         for (int i = 0; i < sudokuSolution.sizeOfMatrix; i++) {
             for (int j = 0; j < sudokuSolution.sizeOfMatrix; j++) {
                 System.out.print(sudokuSolution.sudokuMatrix[i][j]);
             }
             System.out.println();
         }
+
 
         System.out.println("Size of the sudoku matrix = " + args[0]);
         System.out.println("List of allowed symbols = " + args[1]);

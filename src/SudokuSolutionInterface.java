@@ -1,4 +1,10 @@
 public interface SudokuSolutionInterface {
 
-    public void computeSolution();
+    boolean computeSolution();
+
+    boolean isSolved();
+
+    boolean isValid(int row, int column, char target);
+
+    CellItem findEmptyCell();
 }
