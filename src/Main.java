@@ -1,11 +1,20 @@
 public class Main {
 
-    public static void main(String[] args) {
+    /**
+     * @param args - Command Line Arguments - To be set explicitly if used in IntelliJ or Eclipse
+     * @throws Exception
+     */
+    public static void main(String[] args) throws Exception {
 
-        SudokuSolution sudokuSolution = new SudokuSolution();
+        if (args.length != (Character.getNumericValue(args[0].toCharArray()[0]) + 3)) {
+            throw new Exception("Incorrect Configuration. Check Line Numbers \n expected: " + Character.getNumericValue(args[0].toCharArray()[0]) + 2 + "\n actual = " + args.length);
+        }
+
 
         // Storing size of matrix
-        sudokuSolution.sizeOfMatrix = Character.getNumericValue(args[0].toCharArray()[0]);
+        Integer size = Character.getNumericValue(args[0].toCharArray()[0]);
+        SudokuSolution sudokuSolution = new SudokuSolution(size);
+
 
         // Storing the allowed Symbols list
         for (char a : args[1].toCharArray()) {
@@ -34,10 +43,5 @@ public class Main {
             }
             System.out.println();
         }
-
-
-        System.out.println("Size of the sudoku matrix = " + args[0]);
-        System.out.println("List of allowed symbols = " + args[1]);
-
     }
 }

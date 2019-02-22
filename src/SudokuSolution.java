@@ -1,13 +1,26 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * SudokuSolution Class
+ */
 public class SudokuSolution implements SudokuSolutionInterface {
     List<Character> allowedSymbols = new ArrayList<>();
-    Integer sizeOfMatrix = 9;
+    Integer sizeOfMatrix;
     Character defaultCharacter = '0';
 
-    Character[][] sudokuMatrix = new Character[sizeOfMatrix][sizeOfMatrix];
+    Character[][] sudokuMatrix;
 
+    SudokuSolution(int sizeOfMatrix) {
+        this.sizeOfMatrix = sizeOfMatrix;
+        sudokuMatrix = new Character[sizeOfMatrix][sizeOfMatrix];
+    }
+
+    /**
+     * Computes Solution and stores it in sudokuMatrix
+     *
+     * @return
+     */
     @Override
     public boolean computeSolution() {
         int memRow;
@@ -32,6 +45,11 @@ public class SudokuSolution implements SudokuSolutionInterface {
         return false;
     }
 
+    /**
+     * Checks if the sudoku matrix is resolved
+     *
+     * @return
+     */
     @Override
     public boolean isSolved() {
         for (int i = 0; i < sizeOfMatrix; i++) {
@@ -43,6 +61,12 @@ public class SudokuSolution implements SudokuSolutionInterface {
         return true;
     }
 
+    /**
+     * @param row    - Row Number
+     * @param column - Column Number
+     * @param target - Target Character
+     * @return
+     */
     @Override
     public boolean isValid(int row, int column, char target) {
         // Check for row conflict
@@ -72,6 +96,11 @@ public class SudokuSolution implements SudokuSolutionInterface {
         return true;
     }
 
+    /**
+     * Used to find the next empty cell
+     *
+     * @return
+     */
     @Override
     public CellItem findEmptyCell() {
         CellItem cellItem = new CellItem();
